@@ -96,7 +96,7 @@
   NSError *authError = nil;
   self.lastCallArgs = nil;
   self.lastResult = nil;
-  context.localizedFallbackTitle = @"";
+  context.localizedFallbackTitle = @"Enter PIN code";
 
   if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                            error:&authError]) {
@@ -110,6 +110,7 @@
                             case LAErrorPasscodeNotSet:
                             case LAErrorTouchIDNotAvailable:
                             case LAErrorTouchIDNotEnrolled:
+                            case LAErrorUserFallback:
                             case LAErrorTouchIDLockout:
                               [self handleErrors:error
                                    flutterArguments:arguments
